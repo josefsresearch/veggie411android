@@ -1,0 +1,49 @@
+				//String sp = "Rice Flour, Contains Less Than 1% of the Following: Sunflower Oil and Rice Bran Extract. Vitamins and Minerals: Tricalcium Phosphate, ascorbic Acid (Vitamin C), Electrolytic Iron, Zinc Sulfate, D-Alpha Tocopherol Acetate (Vitamin E), Niacinamide, Mixed Tocopherols, Mononitrate (Vitamin B1), Riboflavin (Vitamin B2), Pyridoxine Hydrochloride (Vitamin B6), Vitamin B12 and Folic Acid.";
+				//printAllIngredients(sp);
+				
+				private void printAllIngredients(String i) {
+				ArrayList<String> ingreds = new ArrayList<String>();
+				Log.i("working on", i);
+				String[] next = null;
+				Stack<String[]> stack = new Stack<String[]>();
+				String[] temp = null;
+				String[] cur = new String[1];
+				cur[0] = i;
+				stack.add(cur);
+				
+				while (!stack.isEmpty()) {
+					cur = stack.pop();
+					for (String s:cur) {
+						//Log.i("CUR", s);
+						if (s.contains(". ")) {
+							next = s.split("\\. ");
+							stack.add(next);
+						} else if (s.contains(".")) {
+							next = s.split("\\.");
+							stack.add(next);
+						} else if (s.contains(", ")) {
+							next = s.split(", ");
+							stack.add(next);
+						} else if (s.contains(",")) {
+							next = s.split(",");
+							stack.add(next);
+						} else if (s.contains(": ")) {
+							next = s.split(": ");
+							temp = new String[1];
+							temp[0] = next[1];
+							stack.add(temp);
+						} else if (s.contains(":")) {
+							next = s.split(":");
+							temp = new String[1];
+							temp[0] = next[1];
+							stack.add(temp);
+						} else if (s.contains(" and ")) {
+							next = s.split(" and ");
+							stack.add(next);
+						} else {
+							Log.i("now", s);
+							ingreds.add(s);
+						}
+					}
+				}
+				}

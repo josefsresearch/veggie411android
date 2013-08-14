@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.veggie411.veggie411"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="16" />
+    
+     <uses-permission android:name="android.permission.CAMERA" />
+ <uses-feature android:name="android.hardware.camera" />
+ <uses-feature android:name="android.hardware.camera.autofocus" />
+ <uses-permission android:name="android.permission.INTERNET" /> 
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.veggie411.veggie411.MainActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.veggie411.veggie411.SignInActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.veggie411.veggie411.AddProductActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MainActivity" />
+        </activity>
+      	<activity
+            android:name="com.veggie411.veggie411.ViewProductActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.veggie411.veggie411.ProductListActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.veggie411.veggie411.IngredientsActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.veggie411.veggie411.MoreActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.veggie411.veggie411.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:parentActivityName="com.veggie411.veggie411.MoreActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.MoreActivity" />
+        </activity>
+                <activity
+            android:name="com.veggie411.veggie411.EditProfileActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:parentActivityName="com.veggie411.veggie411.ProfileActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.veggie411.veggie411.ProfileActivity" />
+        </activity>
+    </application>
+
+</manifest>

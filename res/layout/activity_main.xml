@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/main_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/scan"
+            android:text="@string/main_scan"
+            android:textStyle="italic"
+            android:typeface="serif" />
+
+        <ImageButton
+            android:id="@+id/main_products"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/product_list"
+            android:minHeight="40dp"
+            android:text="@string/main_products"
+            android:textStyle="italic"
+            android:typeface="serif" />
+
+        <ImageButton
+            android:id="@+id/main_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/ingredients"
+            android:minHeight="40dp"
+            android:text="@string/main_ingredients"
+            android:textStyle="italic"
+            android:typeface="serif" />
+
+        <ImageButton
+            android:id="@+id/main_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:background="@drawable/more"
+            android:minHeight="40dp"
+            android:text="@string/main_more"
+            android:textStyle="italic"
+            android:typeface="serif" />
+    </LinearLayout>
+
+</RelativeLayout>

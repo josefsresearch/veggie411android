@@ -1,0 +1,153 @@
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="125dp" >
+
+            <ImageButton
+                android:id="@+id/edit_profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/default_picture" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <RadioButton
+                    android:id="@+id/edit_profile_lacto_ovo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="@string/edit_profile_lacto_ovo" />
+
+                <RadioButton
+                    android:id="@+id/edit_profile_pescatarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="@string/edit_profile_pescatarian" />
+
+                <RadioButton
+                    android:id="@+id/edit_profile_vegetarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:checked="true"
+                    android:text="@string/edit_profile_vegetarian" />
+
+                <RadioButton
+                    android:id="@+id/edit_profile_vegan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="@string/edit_profile_vegan" />
+
+                <RadioButton
+                    android:id="@+id/edit_profile_none"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="@string/edit_profile_none" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/edit_profile_special_ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_centerHorizontal="true"
+            android:text="@string/edit_profile_special_ingredients"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ListView
+            android:id="@+id/edit_profile_special_ingredients_list"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/edit_profile_special_ingredients" >
+        </ListView>
+
+        <ImageButton
+            android:id="@+id/edit_profile_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF"
+            android:src="@drawable/save" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/edit_profile_save_button"
+            android:layout_alignParentLeft="true" >
+
+            <EditText
+                android:id="@+id/edit_profile_add_ingredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:ems="10" >
+
+                <requestFocus />
+            </EditText>
+
+            <ImageButton
+                android:id="@+id/edit_profile_add_button"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/confirm" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_alignParentLeft="true"
+            
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/edit_profile_can_eat"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:src="@drawable/success_small" />
+
+            <RadioButton
+                android:id="@+id/edit_profile_cant_eat"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:checked="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="30dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:src="@drawable/fail_small" />
+        </RadioGroup>
+
+    </RelativeLayout>
