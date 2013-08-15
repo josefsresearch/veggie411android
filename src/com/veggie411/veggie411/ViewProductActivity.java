@@ -90,8 +90,6 @@ public class ViewProductActivity extends Activity {
 				finish();
 			}
 		});
-//		while (MainActivity.requesting){
-//		}
 		product = MainActivity.curProduct;
 		if (product == null) {
 			Log.i("WEIRD", "WEIRD");

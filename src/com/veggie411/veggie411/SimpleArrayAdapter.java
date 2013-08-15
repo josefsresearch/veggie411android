@@ -59,11 +59,13 @@ public class SimpleArrayAdapter extends ArrayAdapter<String> {
 	    if (MainActivity.blacklistDatabase.containsKey(s)) {
 	    	if (MainActivity.blacklistDatabase.get(s) == false) {
 	    		holder.image.setImageResource(R.drawable.fail_small);
+	    		//Log.i("ingredient", "blacklisted");
 		    } else {
 		      holder.image.setImageResource(R.drawable.success_small);
+		      //Log.i("ingredient", "whitelisted");
 		    }
 	    } else {
-	    	Log.e("Throw", "some error");
+	    	//Log.i("ingredient", "not blacklisted");
 	    }
 	    return rowView;
 	  }

@@ -35,7 +35,6 @@ public class GetItem extends AsyncTask<Object, Integer, String> {
 
 	//need context?
 	public GetItem(Context c, String s) {
-		MainActivity.requesting = true;
 		Log.i("GOT STRING", s);
 		context = c;
 		this.code = s;
@@ -54,8 +53,6 @@ public class GetItem extends AsyncTask<Object, Integer, String> {
 
 	@Override
 	protected String doInBackground(Object... arg0) {
-//		for (int i=0;i<900000000;i++) {
-//		}
 		getItem();
 		return "SUCCESS";
 	}
@@ -105,9 +102,7 @@ public class GetItem extends AsyncTask<Object, Integer, String> {
 		Log.i("GET_ITEM","starting");
 		HttpClient httpClient = new DefaultHttpClient();
 		JSONObject json = new JSONObject();
-		//JSONArray jsonArray = new JSONArray();
-		//URI = "https://api.nutritionix.com/v1_1/item";
-		URI = "https://api.nutritionix.com/v1_1/item?appId=82d7fc68&appKey=42574fb537accef0d28c1003cbb50826&upc=";
+		URI = Constants.URI;
 		HttpGet httpGet = new HttpGet(URI+code);
 
 		BasicHttpResponse httpResponse = null;
@@ -130,8 +125,6 @@ public class GetItem extends AsyncTask<Object, Integer, String> {
 				String brand;
 				String ingredients;
 				try {
-					//InputStream inputStream = result.getContent();
-					//Log.i("RESULT", readInputStream(inputStream));
 					ByteArrayOutputStream baos = new ByteArrayOutputStream();
 					IOUtils.copy(result.getContent(), baos);
 					JSONObject jsonObject = null;
@@ -155,7 +148,6 @@ public class GetItem extends AsyncTask<Object, Integer, String> {
 						p.setBrand(brand);
 						p.setIngredients(ingreds);
 						MainActivity.curProduct = p;
-						MainActivity.requesting = false;
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -171,7 +163,6 @@ public class GetItem extends AsyncTask<Object, Integer, String> {
 			}
 		} else {
 			MainActivity.curProduct = null;
-			MainActivity.requesting = false;
 			try {
 				Log.i("MORE", readInputStream(httpResponse.getEntity().getContent()));
 			} catch (IllegalStateException e) {

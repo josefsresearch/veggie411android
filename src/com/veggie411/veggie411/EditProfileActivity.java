@@ -125,7 +125,7 @@ public class EditProfileActivity extends Activity {
 					Log.i("STATUS", "V");
 				};
 				Editor spEditor = sp.edit();
-				spEditor.putString(Constants.STATUS, status);
+				spEditor.putString(Constants.SP_STATUS, status);
 				spEditor.commit();
 				Log.i("STATUS", "="+status);
 				preferencesDatasource.open();
@@ -160,7 +160,7 @@ public class EditProfileActivity extends Activity {
 
 	public void onResume() {
 		super.onResume();
-		preferencesDatasource = new PreferencesDataSource(this);
+		//preferencesDatasource = new PreferencesDataSource(this);
 	}
 
 	public void onPause() {

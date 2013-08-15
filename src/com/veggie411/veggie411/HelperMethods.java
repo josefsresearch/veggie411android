@@ -4,83 +4,124 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HelperMethods {
-	//json to product
-	//product to json
-	protected static void addProducts() {
-		Product a = new Product("4001686301555");
-		a.setBrand("HARIBO");
-		a.setName("GOLDBAREN");
-		a.addIngredient("GLUCOSE SYRUP");
-		a.addIngredient("SUGAR");
-		a.addIngredient("GELATIN");
-		a.addIngredient("DEXTROSE");
-		a.addIngredient("CITRIC ACID");
-		a.addIngredient("ARONIA");
-		a.addIngredient("NETTLE CONCENTRATE");
-		a.addIngredient("SPINACH CONCENTRATE");
-		a.addIngredient("KIWI CONCENTRATE");
-		a.addIngredient("ORANGE CONCENTRATE");
-		a.addIngredient("ELDERBERRY CONCENTRATE");
-		a.addIngredient("LEMON CONCENTRATE");
-		a.addIngredient("MANGO CONCENTRATE");
-		a.addIngredient("PASSION FRUIT CONCENTRATE");
-		a.addIngredient("BLACKCURRENT CONCENTRATE");
-		a.addIngredient("APPLE JUICE FROM CONCENTRATE");
-		a.addIngredient("STRAWBERRY JUICE FROM CONCENTRATE");
-		a.addIngredient("RASPBERRY JUICE FROM CONCENTRATE");
-		a.addIngredient("ORANGE JUICE FROM CONCENTRATE");
-		a.addIngredient("LEMON JUICE FROM CONCENTRATE");
-		a.addIngredient("PINEAPPLE JUICE FROM CONCENTRATE");
-		a.addIngredient("FLAVOR");
-		a.addIngredient("WHITE YELLOW BEESWAX");
-		a.addIngredient("CARNAUBA WAX");
-		a.addIngredient("ELDERBERRY EXTRACT");
-		a.addIngredient("FRUIT EXTRACT");
-		a.addIngredient("FRUIT EXTRACT FROM CAROB");
-		a.addIngredient("INVERT SUGAR SYRUP");
-		
-		//MainActivity.tempProductDatabase.put("4001686301555", a);
-		
-//		for (Product p:MainActivity.tempProductDatabase.values()) {
-//			Log.i("PRODUCT", p.getBarcode());
-//			Log.i("Brand", p.getBrand());
-//			Log.i("Name", p.getName());
-//			String s = "";
-//			for (String i:p.getIngredientsArray()) {
-//				s+=","+i;
-//			}
-//			Log.i("Ingredients", s);
-//		}
-		
-		//add ingredient
-	}
 
-	public static void addIngredients() {
-		Ingredient a = new Ingredient("GELATIN");
+	public static ArrayList<Ingredient> getAllIngredients() {
 		
-		MainActivity.ingredientDatabase.put(a.getName(), a);
-		//MainActivity.tempIngredientDatabase.put(b.getName(), b);
-	}
-
-	public static void addUserBlacklist() {
-		//MainActivity.tempBlacklistDatabase.add("chicken");
-		MainActivity.blacklistDatabase.put("GELATIN", false);
-	}
-
-	public static ArrayList<HashMap> getAllIngredients() {
+//		name = "";
+//		ename = "";
+//		references = "";
+//		status = 0;
+//		description = "";
+//		temp = new Ingredient(name, ename, references, status, description);
+//		ret.add(temp);
+		
+		Ingredient temp;
+		String name = "";
+		String ename = "";
+		String references = "";
+		int status = 0;
+		String description = "";
 		ArrayList ret = new ArrayList();
-		HashMap temp = new HashMap();
-		temp.put("name", "a");
-		temp.put("ename", null);
-		temp.put("status", 1);
-		temp.put("description", null);
+		
+		name = "Curcumin";
+		ename = "E100";
+		references = "";
+		status = 0;
+		description = "An orange yellow colour derived from the root of the curcuma (turmeric) plant. " +
+				"High doses should not be taken by people with gallstones, obstructive jaundice, acute bilious colic or toxic liver disorders.";
+		temp = new Ingredient(name, ename, references, status, description);
 		ret.add(temp);
-		temp = new HashMap();
-		temp.put("name", "b");
-		temp.put("ename", null);
-		temp.put("status", 1);
-		temp.put("description", null);
+		
+		name = "Riboflavin";
+		ename = "E101";
+		references = "";
+		status = 0;
+		description = "Also known as vitamin B2. It has a key role in maintaining health in humans and animals.";
+		temp = new Ingredient(name, ename, references, status, description);
 		ret.add(temp);
+		
+		name = "lactoflavin";
+		ename = "E101";
+		references = "Riboflavin";
+		status = 0;
+		description = "";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "Vitamin B2";
+		ename = "E101";
+		references = "Riboflavin";
+		status = 0;
+		description = "";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "Riboflavin-5\'-Phosphate";
+		ename = "E101a";
+		references = "";
+		status = 0;
+		description = "A more soluble form of Riboflavin (B2), sometimes used as an orange / red food color. " +
+				"Although naturally present in many foods such as milk, eggs, liver and vegetables, it is commercially prepared " +
+				"from yeasts and also manufactured synthetically.";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "Flavin mononucleotide";
+		ename = "E101a";
+		references = "Riboflavin-5\'-Phosphate";
+		status = 0;
+		description = "";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "FMN";
+		ename = "E101a";
+		references = "Riboflavin-5\'-Phosphate";
+		status = 0;
+		description = "";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);		  			
+		
+		name = "A";
+		ename = "";
+		references = "";
+		status = 0;
+		description = "status=0";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "B";
+		ename = "";
+		references = "";
+		status = 1;
+		description = "status=1";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "C";
+		ename = "";
+		references = "";
+		status = 2;
+		description = "status=2";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "D";
+		ename = "";
+		references = "";
+		status = 3;
+		description = "status=3";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
+		name = "E";
+		ename = "";
+		references = "";
+		status = 4;
+		description = "status=4";
+		temp = new Ingredient(name, ename, references, status, description);
+		ret.add(temp);
+		
 		return ret;
 	}
 	

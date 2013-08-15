@@ -23,12 +23,9 @@ public class IngredientsActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ingredients);
 		datasource = new IngredientsDataSource(this);
-//		// Use the SimpleCursorAdapter to show the
-//		// elements in a ListView
-//		ArrayAdapter<Ingredient> adapter = new ArrayAdapter<Ingredient>(this,
-//				android.R.layout.simple_list_item_1, values);
-//		setListAdapter(adapter);
-		String[] ingredients = (String[]) datasource.getIngredientsArray(datasource.getAllIngredients());
+		datasource.open();
+		List<Ingredient> ingre = datasource.getAllIngredients();
+		String[] ingredients = (String[]) datasource.getIngredientsArray(ingre);
 		final ArrayAdapter<String> adapter = new SimpleArrayAdapter(this, ingredients);
 	    setListAdapter(adapter);
 	    final ListView list = getListView();

@@ -1,6 +1,7 @@
 package com.veggie411.veggie411;
 
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -41,7 +42,6 @@ public class MainActivity extends Activity {
 	private SharedPreferences sp;
 
 	protected static Product curProduct = null;
-	protected static boolean requesting = false;
 
 	private Builder alertDialog;
 	private Toast featureNotImplemented;
@@ -51,7 +51,11 @@ public class MainActivity extends Activity {
 		Log.i(Constants.ACTIVITY_MAIN, Constants.CREATED);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		new SetUpApp(this).execute();
+		sp = getSharedPreferences(Constants.SP_FILE, MODE_PRIVATE);
+		if (!sp.getBoolean(Constants.SP_DATABASE_UP_TO_DATE, false)) {
+			Log.i("DB not set up!", "setting up.....");
+			new SetUpApp(this).execute();
+		}
 		alertDialog = new AlertDialog.Builder(this);
 		scanButton = (ImageButton) findViewById(R.id.main_scan);
 		productsButton = (ImageButton) findViewById(R.id.main_products);
@@ -62,8 +66,7 @@ public class MainActivity extends Activity {
 		ingredientsActivity = new Intent(this, IngredientsActivity.class);
 		featureNotImplemented = Toast.makeText(this, Constants.TOAST_NOT_IMPLEMENTED, Toast.LENGTH_SHORT);		
 		pDataSource = new PreferencesDataSource(this);
-		sp = getSharedPreferences(Constants.VEG, MODE_PRIVATE);
-		if (sp.getString(Constants.NAME, "") == "") {
+		if (sp.getString(Constants.SP_NAME, "") == "") {
 			final Dialog d = new Dialog(this);
 			d.setContentView(R.layout.dialog_signin);
 			final ImageButton signInButton = (ImageButton) d.findViewById(R.id.signin_button);
@@ -85,18 +88,18 @@ public class MainActivity extends Activity {
 						Toast.makeText(MainActivity.this, "Please fill in your city", Toast.LENGTH_SHORT).show();
 					} else {
 						Editor spEditor = sp.edit();
-						spEditor.putString(Constants.NAME, n);
-						spEditor.putString(Constants.CITY, c);
+						spEditor.putString(Constants.SP_NAME, n);
+						spEditor.putString(Constants.SP_CITY, c);
 						spEditor.commit();
-						Log.i("sp after edit", sp.getString(Constants.NAME, ""));
+						Log.i("sp after edit", sp.getString(Constants.SP_NAME, ""));
 						d.cancel();
 					}
 				}
 			});
 			d.show();
 		} else {
-			Log.i("name got", sp.getString("NAME", ""));
 		}
+		fillPreferenceHash();
 
 		scanButton.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -163,8 +166,8 @@ public class MainActivity extends Activity {
 		ingredientsButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				featureNotImplemented.show();
-				//startActivity(ingredientsActivity);
+				//featureNotImplemented.show();
+				startActivity(ingredientsActivity);
 			}
 		});
 		moreButton.setOnTouchListener(new OnTouchListener() {
@@ -186,6 +189,15 @@ public class MainActivity extends Activity {
 				startActivity(addProductActivity);
 			}
 		});
+	}
+
+	private void fillPreferenceHash() {
+		pDataSource.open();
+		List<Preference> list = pDataSource.getAllPreferences();
+		blacklistDatabase = new HashMap<String, Boolean>();
+		for (Preference p:list) {
+			blacklistDatabase.put(p.getIngredient(), p.isEdible());
+		}
 	}
 
 	private boolean connectedToInternet() {
@@ -220,7 +232,7 @@ public class MainActivity extends Activity {
 			IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 			if (scanResult != null && scanResult.getContents() != null) {
 				String code = scanResult.getContents();
-				//new GetItem(this, code).execute(); 
+				new GetItem(this, code).execute(); 
 				//				Intent viewProductActivity = new Intent(this, ViewProductActivity.class);
 				//				viewProductActivity.putExtra(Constants.BARCODE, code);
 				//				startActivityForResult(viewProductActivity, Constants.RESULT_VIEW_PRODUCT);

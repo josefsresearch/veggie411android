@@ -21,8 +21,6 @@ public class ViewProductLoadingActivity extends Activity {
 	private void getCode(String barcode) {
 		//new GetItem(barcode).execute();
 		//MainActivity.requesting = true;
-		while (MainActivity.requesting) {
-		}
 		if (MainActivity.curProduct == null) {
 			Toast.makeText(this, "SORRY! We do not have this product yet, but we hope to have it soon.", Toast.LENGTH_LONG).show();
 			setResult(Activity.RESULT_CANCELED, new Intent());

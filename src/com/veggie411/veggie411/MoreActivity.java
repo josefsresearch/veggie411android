@@ -100,7 +100,10 @@ public class MoreActivity extends Activity {
 		settingsButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				notImplementedToast.show();
+				//notImplementedToast.show();
+				for (String s:MainActivity.blacklistDatabase.keySet()) {
+					Log.i(s, String.valueOf(MainActivity.blacklistDatabase.get(s)));
+				}
 			}
 		});
 		

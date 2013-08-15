@@ -10,6 +10,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_ID = "_id";
 	public static final String COLUMN_NAME = "name";
 	public static final String COLUMN_ENAME = "ename";
+	public static final String COLUMN_REFERENCES = "reference";
 	public static final String COLUMN_STATUS = "status";
 	public static final String COLUMN_DESCRIPTION = "description";
 	
@@ -22,15 +23,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_CREATE_INGREDIENTS = "create table "
 			+ TABLE_INGREDIENTS + "(" + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_NAME
-			+ " text unique not null, " + COLUMN_STATUS
-			+ " integer not null, " + COLUMN_ENAME
-			+ " text, " + COLUMN_DESCRIPTION 
+			+ " text unique not null, " + COLUMN_ENAME
+			+ " text not null, " + COLUMN_REFERENCES
+			+ " integer, " + COLUMN_STATUS
+			+ " integer, " + COLUMN_DESCRIPTION 
 			+ " text);";
 	private static final String DATABASE_CREATE_PREFERENCES = "create table "
 			+ TABLE_PREFERENCES + "(" + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_NAME
 			+ " text unique not null, " + COLUMN_EDIBLE
 			+ " boolean not null);";
+	
 	public MySQLiteHelper(Context context) { 
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
